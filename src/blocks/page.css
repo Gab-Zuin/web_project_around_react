@@ -1,0 +1,6 @@
+.page {
+  background-color: rgb(0, 0, 0);
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  margin: auto;
+}

@@ -1,0 +1,91 @@
+.card {
+  max-width: 282px;
+  max-height: 361px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.cards__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+.card__image {
+  max-width: 282px;
+  max-height: 282px;
+  min-width: 282px;
+  min-height: 282px;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+  aspect-ratio: 1/ 1;
+}
+
+.card__image_horizontal-popup {
+  max-width: 433px;
+  max-width: 540px;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  margin: auto;
+}
+
+.card__image_vertical-popup {
+  max-width: 816px;
+  max-width: 540px;
+  position: absolute;
+  z-index: 5;
+  top: 90px;
+  left: 232px;
+}
+
+.card__content {
+  display: flex;
+  padding: 25px 15px 30px 20px;
+  margin-left: 8px;
+  justify-content: space-between;
+}
+
+.card__place {
+  max-width: 208px;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__like {
+  width: 21px;
+  height: 19px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-image: url(../Images/Vector_Like.svg);
+}
+
+.card__like_active {
+  width: 21px;
+  margin-left: 10px;
+  background-image: url(../Images/Vector_Like_Active.svg);
+}
+
+.card__like:hover {
+  opacity: 0.5;
+}
+
+.card__trash {
+  width: 18px;
+  height: 19px;
+  margin-top: 18px;
+  margin-left: 249px;
+  background-image: url(../Images/Trash.svg);
+  position: absolute;
+}
