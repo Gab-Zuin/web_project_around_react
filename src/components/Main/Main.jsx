@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState, useEffect, useContext } from "react";
 import Avatar from "../../../src/Images/Avatar.jpg";
 import AddImage from "../../../src/Images/Vector add.svg";
 import Edit from "../../../src/Images/Vector edit.svg";
@@ -9,50 +8,30 @@ import EditProfile from "./components/forms/EditProfile/EditProfile.jsx";
 import EditAvatar from "./components/forms/EditAvatar/EditAvatar.jsx";
 import Card from "./components/Card/Card.jsx";
 import ImagePopup from "./components/forms/ImagePopup/ImagePopup.jsx";
-//import { useState } from "react";
+import api from "../../utils/Api.js";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const cards = [
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
-  },
-  {
-    isLiked: false,
-    _id: "5d1f064ed321eb4bdcd707de",
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:11:58.324Z",
-  },
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
-  },
-];
-console.log(cards);
-
-export default function Main() {
-  const [popup, setPopup] = React.useState(null);
+export default function Main({
+  cards,
+  onCardLike,
+  onCardDelete,
+  onOpenPopup,
+  onClosePopup,
+  popup,
+}) {
+  const { currentUser } = useContext(CurrentUserContext);
   const newCard = { title: "Nueva Tarjeta", children: <AddCard /> };
   const editProfile = { title: "Editar Perfil", children: <EditProfile /> };
   const editAvatar = { title: "Editar Avatar", children: <EditAvatar /> };
 
   const handleAddCard = () => {
-    setPopup(newCard);
+    onOpenPopup(newCard);
   };
   const handleEditProfile = () => {
-    setPopup(editProfile);
+    onOpenPopup(editProfile);
   };
   const handleEditAvatar = () => {
-    setPopup(editAvatar);
+    onOpenPopup(editAvatar);
   };
 
   function handleOpenPopup(popup) {
@@ -68,13 +47,13 @@ export default function Main() {
         <section>
           <div className="profile">
             <img
-              src={Avatar}
+              src={currentUser.avatar}
               alt="Avatar profile"
               className="profile__avatar"
             />
             <div className="profile__info">
               <div className="profile__content">
-                <h1 className="profile__name">Jacques Cousteau</h1>
+                <h1 className="profile__name">{currentUser.name}</h1>
                 <button
                   className="profile__edit-button"
                   onClick={handleEditProfile}
@@ -82,7 +61,7 @@ export default function Main() {
                   <img src={Edit} alt="Boton editar" />
                 </button>
               </div>
-              <p className="profile__profession">Explorador</p>
+              <p className="profile__profession">{currentUser.about}</p>
             </div>
             <button className="profile__add-button" onClick={handleAddCard}>
               <img src={AddImage} alt="Boton agregar" />
@@ -99,13 +78,18 @@ export default function Main() {
         <section>
           <ul className="cards__list">
             {cards.map((card) => (
-              <Card key={card._id} card={card} />
+              <Card
+                key={card._id}
+                card={card}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+              />
             ))}
           </ul>
         </section>
 
         {popup && (
-          <Popup onClose={() => setPopup(null)} title={popup.title}>
+          <Popup onClose={onClosePopup} title={popup.title}>
             {popup.children}
           </Popup>
         )}

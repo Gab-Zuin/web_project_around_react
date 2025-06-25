@@ -1,6 +1,17 @@
+import { useState } from "react";
+import api from "../../../../../utils/api";
+
 export default function AddCard() {
+  function onSubmit(event) {
+    event.preventDefault();
+    api.createCard({ name, link });
+  }
+
+  const [name, setName] = useState("");
+  const [link, setLink] = useState("");
+
   return (
-    <fieldset className="form">
+    <form className="form" onSubmit={onSubmit}>
       <h2 className="form__title">Nuevo lugar</h2>
 
       <input
@@ -12,6 +23,7 @@ export default function AddCard() {
         maxLength="30"
         placeholder="Título"
         required
+        onChange={(e) => setName(e.target.value)}
       />
       <span className="form__input_type_error input_title-error"></span>
       <input
@@ -21,11 +33,12 @@ export default function AddCard() {
         name="link"
         placeholder="Enlace a la imagen"
         required
+        onChange={(e) => setLink(e.target.value)}
       />
       <span className="form__input_type_error input_link-error"></span>
       <button className="form__submit" type="submit">
         Crear
       </button>
-    </fieldset>
+    </form>
   );
 }

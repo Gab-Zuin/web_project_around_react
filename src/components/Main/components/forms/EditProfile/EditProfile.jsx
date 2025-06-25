@@ -1,33 +1,33 @@
-export default function EditProfile() {
-  return (
-    <fieldset className="form">
-      <h2 className="form__title">Editar perfil</h2>
+import React, { useRef, useContext } from "react";
+import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
 
-      <input
-        type="text"
-        className="form__input form__input_name"
-        id="input_name"
-        name="name"
-        minLength="2"
-        maxLength="40"
-        placeholder="Nombre"
-        required
-      />
-      <span className="form__input_type_error input_name-error"></span>
-      <input
-        type="text"
-        className="form__input form__input_about"
-        id="input_about"
-        name="about"
-        minLength="2"
-        maxLength="200"
-        placeholder="Acerca de mí"
-        required
-      />
-      <span className="form__input_type_error input_about-error"></span>
-      <button className="form__submit" type="submit">
+export default function EditAvatar() {
+  const avatarRef = useRef();
+  const { handleUpdateAvatar } = useContext(CurrentUserContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleUpdateAvatar({
+      avatar: avatarRef.current.value,
+    });
+  }
+
+  return (
+    <form className="popup__form" onSubmit={handleSubmit}>
+      <label className="popup__label">
+        <input
+          type="url"
+          className="popup__input popup__input_type_avatar"
+          name="avatar"
+          placeholder="URL del avatar"
+          ref={avatarRef}
+          required
+        />
+        <span className="popup__error" id="avatar-error"></span>
+      </label>
+      <button className="button popup__button" type="submit">
         Guardar
       </button>
-    </fieldset>
+    </form>
   );
 }
