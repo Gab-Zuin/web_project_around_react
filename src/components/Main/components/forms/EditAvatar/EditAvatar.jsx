@@ -1,6 +1,17 @@
-export default function EditAvatar() {
+import React from "react";
+
+export default function EditAvatar({ onUpdateAvatar }) {
+  const formRef = React.useRef();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const avatarUrl = formRef.current.elements.avatar.value;
+    onUpdateAvatar({ avatar: avatarUrl });
+    formRef.current.reset();
+  }
+
   return (
-    <fieldset className="form">
+    <form className="form" ref={formRef} onSubmit={handleSubmit}>
       <h2 className="form__title">Cambiar foto de perfil</h2>
       <input
         type="url"
@@ -14,6 +25,6 @@ export default function EditAvatar() {
       <button type="submit" className="form__submit">
         Guardar
       </button>
-    </fieldset>
+    </form>
   );
 }

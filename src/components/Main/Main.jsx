@@ -8,7 +8,7 @@ import EditProfile from "./components/forms/EditProfile/EditProfile.jsx";
 import EditAvatar from "./components/forms/EditAvatar/EditAvatar.jsx";
 import Card from "./components/Card/Card.jsx";
 import ImagePopup from "./components/forms/ImagePopup/ImagePopup.jsx";
-import api from "../../utils/Api.js";
+import api from "../../utils/api.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function Main({
@@ -18,11 +18,19 @@ export default function Main({
   onOpenPopup,
   onClosePopup,
   popup,
+  onAddPlaceSubmit,
+  onUpdateAvatar,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const newCard = { title: "Nueva Tarjeta", children: <AddCard /> };
+  const newCard = {
+    title: "Nueva Tarjeta",
+    children: <AddCard onAddPlaceSubmit={onAddPlaceSubmit} />,
+  };
   const editProfile = { title: "Editar Perfil", children: <EditProfile /> };
-  const editAvatar = { title: "Editar Avatar", children: <EditAvatar /> };
+  const editAvatar = {
+    title: "Editar Avatar",
+    children: <EditAvatar onUpdateAvatar={onUpdateAvatar} />,
+  };
 
   const handleAddCard = () => {
     onOpenPopup(newCard);
@@ -34,12 +42,12 @@ export default function Main({
     onOpenPopup(editAvatar);
   };
 
-  function handleOpenPopup(popup) {
+  /*   function handleOpenPopup(popup) {
     setPopup(popup);
   }
   function handleClosePopup() {
     setPopup(null);
-  }
+  } */
 
   return (
     <>

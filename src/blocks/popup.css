@@ -12,6 +12,8 @@
 
 .popup__container {
   display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .popup__container_image {
@@ -40,9 +42,9 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  position: relative;
-  right: -598px;
-  top: -170px;
+  position: absolute;
+  right: -40px;
+  top: -40px;
 }
 
 .popup__close-image {

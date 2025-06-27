@@ -4,7 +4,7 @@ export default function Popup({ title = "", children, onClose }) {
   //const { title, children } = props;
   return (
     <div className="popup" id="popup-edit-profile">
-      <form
+      <div
         className={`popup__container ${!title ? "popup__image-container" : ""}`}
       >
         <img
@@ -13,9 +13,8 @@ export default function Popup({ title = "", children, onClose }) {
           className="popup__close"
           onClick={onClose}
         />
-      </form>
-      {title && <h3 className="popup__title">{title}</h3>}
-      {children}
+        {children}
+      </div>
     </div>
   );
 }

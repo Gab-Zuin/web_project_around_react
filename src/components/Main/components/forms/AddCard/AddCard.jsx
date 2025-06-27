@@ -1,10 +1,10 @@
 import { useState } from "react";
-import api from "../../../../../utils/api";
 
-export default function AddCard() {
+export default function AddCard({ onAddPlaceSubmit }) {
   function onSubmit(event) {
     event.preventDefault();
-    api.createCard({ name, link });
+    onAddPlaceSubmit({ name, link });
+    //api.createCard({ name, link });
   }
 
   const [name, setName] = useState("");

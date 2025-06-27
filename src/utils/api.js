@@ -83,6 +83,16 @@ class Api {
       body: JSON.stringify(data),
     }).then((res) => res.json());
   }
+
+  setUserInfo(data) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        ...this._headers,
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  }
 }
 
 const api = new Api({

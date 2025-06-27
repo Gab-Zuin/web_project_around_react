@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
 import Footer from "../components/Footer/Footer";
-import api from "../utils/Api";
+import api from "../utils/api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [currentUser, setCurrentUser] = useState({});
   const [popup, setPopup] = useState(null);
 
@@ -76,9 +75,9 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  const handleAddPlaceSubmit = (data) => {
+  const handleAddPlaceSubmit = ({ name, link }) => {
     api
-      .addCard(data)
+      .createCard({ name, link })
       .then((newCard) => {
         setCards([newCard, ...cards]);
         handleClosePopup();
@@ -103,8 +102,9 @@ function App() {
             onClosePopup={handleClosePopup}
             popup={popup}
             onAddPlaceSubmit={handleAddPlaceSubmit}
+            onUpdateAvatar={handleUpdateAvatar}
           />
-          />
+
           <Footer />
         </div>
       </CurrentUserContext.Provider>
