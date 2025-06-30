@@ -3,7 +3,7 @@ import Avatar from "../../../src/Images/Avatar.jpg";
 import AddImage from "../../../src/Images/Vector add.svg";
 import Edit from "../../../src/Images/Vector edit.svg";
 import Popup from "./Popup/Popup.jsx";
-import AddCard from "./components/forms/AddCard/AddCard.jsx";
+import NewCard from "./components/forms/NewCard/NewCard.jsx";
 import EditProfile from "./components/forms/EditProfile/EditProfile.jsx";
 import EditAvatar from "./components/forms/EditAvatar/EditAvatar.jsx";
 import Card from "./components/Card/Card.jsx";
@@ -24,7 +24,7 @@ export default function Main({
   const { currentUser } = useContext(CurrentUserContext);
   const newCard = {
     title: "Nueva Tarjeta",
-    children: <AddCard onAddPlaceSubmit={onAddPlaceSubmit} />,
+    children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit} />,
   };
   const editProfile = { title: "Editar Perfil", children: <EditProfile /> };
   const editAvatar = {
@@ -32,7 +32,7 @@ export default function Main({
     children: <EditAvatar onUpdateAvatar={onUpdateAvatar} />,
   };
 
-  const handleAddCard = () => {
+  const handleNewCard = () => {
     onOpenPopup(newCard);
   };
   const handleEditProfile = () => {
@@ -71,7 +71,7 @@ export default function Main({
               </div>
               <p className="profile__profession">{currentUser.about}</p>
             </div>
-            <button className="profile__add-button" onClick={handleAddCard}>
+            <button className="profile__add-button" onClick={handleNewCard}>
               <img src={AddImage} alt="Boton agregar" />
             </button>
           </div>

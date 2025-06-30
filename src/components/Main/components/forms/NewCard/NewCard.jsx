@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddCard({ onAddPlaceSubmit }) {
+export default function NewCard({ onAddPlaceSubmit }) {
   function onSubmit(event) {
     event.preventDefault();
     onAddPlaceSubmit({ name, link });
