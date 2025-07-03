@@ -66,18 +66,22 @@
   overflow: hidden;
 }
 
-.card__like {
+.card__like-button {
   width: 21px;
   height: 19px;
   margin-left: 10px;
   cursor: pointer;
   background-image: url(../Images/Vector_Like.svg);
+  background-color: transparent;
+  border: none;
 }
 
-.card__like_active {
+.card__like-button_is-active {
   width: 21px;
   margin-left: 10px;
   background-image: url(../Images/Vector_Like_Active.svg);
+  background-color: transparent;
+  border: none;
 }
 
 .card__like:hover {
@@ -90,5 +94,7 @@
   margin-top: 18px;
   margin-left: 249px;
   background-image: url(../Images/Trash.svg);
+  background-color: transparent;
+  border: none;
   position: absolute;
 }
