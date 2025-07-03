@@ -6,7 +6,7 @@ import Popup from "./Popup/Popup.jsx";
 import NewCard from "./components/forms/NewCard/NewCard.jsx";
 import EditProfile from "./components/forms/EditProfile/EditProfile.jsx";
 import EditAvatar from "./components/forms/EditAvatar/EditAvatar.jsx";
-import Card from "./components/Card/Card.jsx";
+import Card from "../Main/components/Card/Card.jsx";
 import ImagePopup from "./components/forms/ImagePopup/ImagePopup.jsx";
 import api from "../../utils/api.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
