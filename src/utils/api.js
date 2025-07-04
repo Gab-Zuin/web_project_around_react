@@ -22,7 +22,6 @@ class Api {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Respuesta real de /cards:", data);
         return data;
       });
   }

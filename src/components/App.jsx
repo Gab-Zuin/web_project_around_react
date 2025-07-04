@@ -24,7 +24,6 @@ function App() {
   useEffect(() => {
     api.getInitialCards().then((cardsData) => {
       setCards(cardsData);
-      console.log("Tarjetas cargadas:", cardsData);
     });
   }, []);
 
